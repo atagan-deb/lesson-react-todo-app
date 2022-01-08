@@ -6,8 +6,8 @@ import { IncompleteList } from "./components/IncompleteList";
 import { CompleteList } from "./components/CompleteList";
 
 export const App = () => {
-  const [incompleteTodos, setIncompleteTodos] = useState(["あれ", "これ"]);
-  const [completeTodos, setCompleteTodos] = useState(["それ"]);
+  const [incompleteTodos, setIncompleteTodos] = useState([]);
+  const [completeTodos, setCompleteTodos] = useState([]);
   return (
     <>
       <InputTodo

@@ -7,14 +7,19 @@ export const IncompleteList = (props) => {
     setCompleteTodos
   } = props;
 
-  const onClickComplete = (e) => {
-    const completeTodo = e.target.value;
-    setCompleteTodos([...completeTodos, completeTodo]);
-    setIncompleteTodos(incompleteTodos.filter((todo) => todo !== completeTodo));
+  const onClickComplete = (props) => {
+    const { index } = props;
+    const newIncompleteTodos = [...incompleteTodos]
+    newIncompleteTodos.splice(index, 1);
+    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
+    setCompleteTodos(newCompleteTodos);
+    setIncompleteTodos(newIncompleteTodos);
   };
-  const onClickDelete = (e) => {
-    const deleteTodo = e.target.value;
-    setIncompleteTodos(incompleteTodos.filter((todo) => todo !== deleteTodo));
+  const onClickDelete = (props) => {
+    const { index } = props;
+    const newTodos = [...incompleteTodos]
+    newTodos.splice(index, 1);    
+    setIncompleteTodos(newTodos);
   };
   return (
     <div className="incomplete-area">
@@ -25,12 +30,8 @@ export const IncompleteList = (props) => {
             <li key={todo + index}>
               <div className="list-row">
                 <p className="list-text">{todo}</p>
-                <button value={todo} index={index} onClick={onClickComplete}>
-                  完了
-                </button>
-                <button value={todo} onClick={onClickDelete}>
-                  削除
-                </button>
+                <button onClick={() => onClickComplete({ index })}>完了</button>
+                <button onClick={() => onClickDelete({ index })}>削除</button>
               </div>
             </li>
           );

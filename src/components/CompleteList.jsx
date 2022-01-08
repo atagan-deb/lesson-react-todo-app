@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export const CompleteList = (props) => {
   const {
@@ -7,10 +7,12 @@ export const CompleteList = (props) => {
     incompleteTodos,
     setIncompleteTodos
   } = props;
-  const onClickReturn = (e) => {
-    const returnTodo = e.target.value;
-    setIncompleteTodos([...incompleteTodos, returnTodo]);
-    setCompleteTodos(completeTodos.filter((todo) => todo !== returnTodo));
+  const onClickReturn = (props) => {
+    const { index } = props;
+    const newCompleteTodos = [...completeTodos];
+    newCompleteTodos.splice(index, 1);
+    setIncompleteTodos([...incompleteTodos, completeTodos[index]]);
+    setCompleteTodos(newCompleteTodos);
   };
   return (
     <div className="complete-area">
@@ -21,9 +23,7 @@ export const CompleteList = (props) => {
             <li key={todo + index}>
               <div className="list-row">
                 <p className="list-text">{todo}</p>
-                <button value={todo} onClick={onClickReturn}>
-                  戻す
-                </button>
+                <button onClick={() => onClickReturn({ index })}>戻す</button>
               </div>
             </li>
           );
