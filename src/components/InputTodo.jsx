@@ -10,7 +10,7 @@ const style = {
 };
 
 export const InputTodo = (props) => {
-  const { incompleteTodos, setIncompleteTodos } = props;
+  const { incompleteTodos, setIncompleteTodos, isMax } = props;
   const [todoText, setTodoText] = useState("");
   const onChangeTodoText = (e) => {
     setTodoText(e.target.value);
@@ -19,21 +19,20 @@ export const InputTodo = (props) => {
     if (todoText === "") {
       return;
     }
-    if (incompleteTodos.length > 9) {
-      alert("TODOの上限数を超えています！");
-    } else {
-      setIncompleteTodos([...incompleteTodos, todoText]);
-      setTodoText("");
-    }
+    setIncompleteTodos([...incompleteTodos, todoText]);
+    setTodoText("");
   };
   return (
     <div style={style}>
       <input
         placeholder="TODOを入力"
+        disabled={isMax}
         value={todoText}
         onChange={onChangeTodoText}
       />
-      <button onClick={onClickAdd}>追加</button>
+      <button disabled={isMax} onClick={onClickAdd}>
+        追加
+      </button>
     </div>
   );
 };
