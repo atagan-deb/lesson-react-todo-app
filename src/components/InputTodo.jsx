@@ -10,8 +10,12 @@ export const InputTodo = (props) => {
     if (todoText === "") {
       return;
     }
-    setIncompleteTodos([...incompleteTodos, todoText]);
-    setTodoText("");
+    if (incompleteTodos.length > 9) {
+      alert("TODOの上限数を超えています！");
+    } else {
+      setIncompleteTodos([...incompleteTodos, todoText]);
+      setTodoText("");
+    }
   };
   return (
     <div className="inputTodo-area">
