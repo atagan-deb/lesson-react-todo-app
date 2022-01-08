@@ -1,5 +1,14 @@
 import React from "react";
 
+const style = {
+  backgroundColor: 'lightyellow',
+  width: '400px',
+  minHeight: '200px',
+  padding: '8px',
+  margin: '8px',
+  borderRadius: '8px',
+}
+
 export const CompleteList = (props) => {
   const {
     completeTodos,
@@ -15,7 +24,7 @@ export const CompleteList = (props) => {
     setCompleteTodos(newCompleteTodos);
   };
   return (
-    <div className="complete-area">
+    <div style={style}>
       <p className="title">完了したTODO</p>
       <ul>
         {completeTodos.map((todo, index) => {

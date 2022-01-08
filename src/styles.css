@@ -20,30 +20,6 @@ button:hover {
 li {
   padding-bottom: 4px;
 }
-.inputTodo-area {
-  background-color: lightcyan;
-  width: 400px;
-  height: 30px;
-  padding: 8px;
-  margin: 8px;
-  border-radius: 8px;
-}
-.incomplete-area {
-  background-color: rgb(192, 245, 216);
-  width: 400px;
-  min-height: 200px;
-  padding: 8px;
-  margin: 8px;
-  border-radius: 8px;
-}
-.complete-area {
-  background-color: lightyellow;
-  width: 400px;
-  min-height: 200px;
-  padding: 8px;
-  margin: 8px;
-  border-radius: 8px;
-}
 .title {
   text-align: center;
   font-size: 18px;
